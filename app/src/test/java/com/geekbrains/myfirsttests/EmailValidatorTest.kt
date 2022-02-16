@@ -40,4 +40,18 @@ class EmailValidatorTest {
     fun emailValidator_NullEmail_ReturnsFalse() {
         assertFalse(EmailValidator.isValidEmail(null))
     }
+
+    @Test
+    fun emailValidator_RuSymbol_ReturnsError() {
+        assertTrue(EmailValidator.isValidEmail("name@мейл"))
+    }
+
+    @Test
+    fun emailValidator_DotSymbol_ReturnsError() {
+        assertTrue(EmailValidator.isValidEmail(".@email.com"))
+    }
+    @Test
+    fun emailValidator_DelimiterSymbol_ReturnsError() {
+        assertTrue(EmailValidator.isValidEmail("name/lastName@email.com"))
+    }
 }
